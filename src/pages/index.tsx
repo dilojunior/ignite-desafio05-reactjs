@@ -49,28 +49,6 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
   const [nextPage, setNextPage] = useState(postsPagination.next_page);
   const [currentPage, setCurrentPage] = useState();
 
-  /**
- await fetch(postsPagination.next_page)
-      .then(response => response.json())
-      .then(response => {
-        const formattedPosts = response.results.map((post: Post) => {
-          const { uid, first_publication_date, data } = post;
-          return {
-            uid,
-            first_publication_date: format(
-              new Date(first_publication_date),
-              'dd MMM yyyy',
-              {
-                locale: ptBR,
-              }
-            ),
-            data,
-          } as Post;
-        });
-        setPosts([...posts, formattedPosts]);
-      });
- */
-
   async function loadMorePosts(): Promise<void> {
     if (currentPage !== 1 && nextPage === null) {
       return;
